@@ -15,6 +15,10 @@ public class LineItem {
     private int quantity;
     private double lineTotal;
     
+    public LineItem(){
+        
+    }
+    
     public LineItem( Product product , int quantity ){
             
         setProduct( product );
@@ -50,7 +54,7 @@ public class LineItem {
     public String toString(){
         return product + 
                 " \n Quantity:" + quantity +
-                " \n Subtotal:" + lineTotal;
+                " \n Subtotal:" + lineTotal + "\n";
     }
         
 }
