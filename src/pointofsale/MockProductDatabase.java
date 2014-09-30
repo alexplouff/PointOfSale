@@ -38,11 +38,5 @@ public class MockProductDatabase {
         return product;
 
     }
-
-    public static void main(String[] args) {
-       
-        
-       
-    }
-
+    
 }
