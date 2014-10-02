@@ -15,7 +15,16 @@ public class PointOfSale {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+       
+        Register register = new Register();
+        
+        register.startNewTransaction("Cust102");
+        
+        register.addNewLineItem("A101", 3);
+        register.addNewLineItem("C101", 2);
+        
+        register.generateTotalsAndPrintReceipt();
+        
     }
     
 }

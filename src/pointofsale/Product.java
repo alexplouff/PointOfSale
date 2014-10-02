@@ -16,12 +16,6 @@ public class Product {
     private String productDescription;
     private double price;
     private String productID;
-
-    public Product( String productID, double price, String productDescription ) {
-        setProductID( productID);
-        setPrice( price );
-        setProductDescription( productDescription );
-    }
     
     public Product( String productID, double price, String productDescription 
                             , DiscountStrategy discount) {
@@ -31,19 +25,20 @@ public class Product {
         setDiscountStrategy( discount );
     }
     
-    public final void setDiscountStrategy( DiscountStrategy discount ){
+    private void setDiscountStrategy( DiscountStrategy discount ){
         this.discount = discount;
     }
     
     public DiscountStrategy getDiscount(){
         return discount;
     }
+    
 
     public String getProductDescription() {
         return productDescription;
     }
 
-    public final void setProductDescription(String productDescription) {
+    private final void setProductDescription(String productDescription) {
         this.productDescription = productDescription;
     }
 
@@ -63,10 +58,12 @@ public class Product {
         this.productID = productID;
     }
     
-    @Override
-    public String toString(){
-        return productID + " " + productDescription + " " + price;
+    public double getTotalAfterDiscount( int qty){
+        return discount.getTotalAfterDiscount(this.price , qty);
     }
     
-    
+    @Override
+    public String toString(){
+        return productID + " " + productDescription;
+    }
 }

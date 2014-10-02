@@ -10,25 +10,28 @@ package pointofsale;
  * @author Alex
  */
 public class DiscountByQuantity implements DiscountStrategy{
-
-    @Override
-    public double getTotalAfterDiscount(double price, double qty) {
+    private int minQty;
+    private double discountRate;
+    
+    public DiscountByQuantity(int minQty, double discountRate) {
+        this.minQty = minQty;
+        this.discountRate = discountRate;
+    }
+    
+    
+    public double getTotalAfterDiscount(double price, int qty) {
 
         double total = price * qty;
         
-        if (qty > 1) {
-            total = total - ( total*.1 ); 
+        if (qty > minQty) {
+            total = total - ( total*discountRate ); 
             
         }
     
         return total;
+
     }
     
-    public static void main(String[] args) {
-        
-    DiscountByQuantity a = new DiscountByQuantity();
-        System.out.println(a.getTotalAfterDiscount(5.00, 1));
-        System.out.println(a.getTotalAfterDiscount(5.00, 2));
-    }
+    
     
 }

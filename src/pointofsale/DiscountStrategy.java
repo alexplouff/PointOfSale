@@ -5,12 +5,13 @@
  */
 package pointofsale;
 
-/**
+/** Description of class
+ * Responsibilities
  *
  * @author Alex
  */
 public interface DiscountStrategy {
 
-    double getTotalAfterDiscount(double price, double qty);
+    double getTotalAfterDiscount(double price, int qty);
     
 }

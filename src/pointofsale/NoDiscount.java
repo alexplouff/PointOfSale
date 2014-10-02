@@ -11,8 +11,9 @@ package pointofsale;
  */
 public class NoDiscount implements DiscountStrategy {
     
+    
     @Override
-    public double getTotalAfterDiscount( double price, double qty){
+    public double getTotalAfterDiscount( double price, int qty){
         
         return price * qty;
         
