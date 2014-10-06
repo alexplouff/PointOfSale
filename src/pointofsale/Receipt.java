@@ -1,13 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package pointofsale;
 
+import java.text.NumberFormat;
 import java.util.Arrays;
+import java.util.Locale;
 
-/**
+/** The purpose of this class is to create a conceptual, individual lineItem 
+ * for the receipt class to use. The lineItem is stored in a self-adjusting
+ * array ( lineItems ). 
  *
  * @author Alex
  */
@@ -24,11 +24,22 @@ public class Receipt {
 
     }
 
-    public final void setLineItem(LineItem lineItem) {
+    private void setLineItem( LineItem lineItem ) {
         this.lineItem = lineItem;
     }
+    
+    /**
+     * This metod creates a new lineItem and adds it to the receipt. The product
+     * gets looked up by its' productID and if successful, creates a new lineItem.
+     * @param productID
+     * @param quantity 
+     */
+    public void addNewLineItem( String productID , int quantity ){
+        lineItem = new LineItem( productID , quantity );
+     
+    }
 
-    public void addToArray(final LineItem item) {
+    public void addToArray( final LineItem item ) {
         // needs validation
         LineItem[] tempItems = new LineItem[lineItems.length + 1];
         System.arraycopy(lineItems, 0, tempItems, 0, lineItems.length);
@@ -44,8 +55,12 @@ public class Receipt {
         return lineItems;
     }
 
+    /**
+     * gernateTotals() generates all the totals from the lineItem class and uses
+     * them to create the amount after discount.
+     */
     public void generateTotals() {
-        for (LineItem item : lineItems) {
+        for ( LineItem item : lineItems ) {
             grandTotal += item.getLineTotal();
             amountDueAfterDiscount += item.getTotalAfterDiscount();
             totalDiscount = grandTotal - amountDueAfterDiscount;
@@ -64,15 +79,21 @@ public class Receipt {
         return amountDueAfterDiscount;
     }
     
+   
+    
     @Override
         public String toString() {
+        
+        NumberFormat formatter = NumberFormat.getCurrencyInstance( Locale.US );
         String s = Arrays.toString(lineItems);
         
            return "Items: "
                 + "\n" + s.replaceAll("[,]", "\n\n")
-                + "\n\n            Grand Total: $" + grandTotal
-                + "\n            Discount: $" + totalDiscount
-                + "\n            Amount Due: $" + amountDueAfterDiscount;
+                + "\n\n            Grand Total: $" + formatter.format( grandTotal )
+                + "\n            Discount: $" + formatter.format( totalDiscount )
+                + "\n            Amount Due: $" + formatter.format( amountDueAfterDiscount );
+           
+           
     }
-
+        
 }

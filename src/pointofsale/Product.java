@@ -1,12 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package pointofsale;
 
 /**
- *
+ * The purpose of this class is to create a conceptual product. The product requires
+ * a productID , price , description , and a DiscountStrategy to be a real product.
  * @author Alex
  */
 public class Product {
@@ -17,8 +14,8 @@ public class Product {
     private double price;
     private String productID;
     
-    public Product( String productID, double price, String productDescription 
-                            , DiscountStrategy discount) {
+    public Product( String productID , double price , String productDescription 
+                            , DiscountStrategy discount ) {
         setProductID( productID);
         setPrice( price );
         setProductDescription( productDescription );
@@ -32,13 +29,12 @@ public class Product {
     public DiscountStrategy getDiscount(){
         return discount;
     }
-    
 
     public String getProductDescription() {
         return productDescription;
     }
 
-    private final void setProductDescription(String productDescription) {
+    private void setProductDescription( String productDescription ) {
         this.productDescription = productDescription;
     }
 
@@ -46,7 +42,7 @@ public class Product {
         return price;
     }
 
-    public final void setPrice(double price) {
+    private void setPrice(double price) {
         this.price = price;
     }
 
@@ -54,12 +50,12 @@ public class Product {
         return productID;
     }
 
-    public final void setProductID(String productID) {
+    private void setProductID( String productID ) {
         this.productID = productID;
     }
     
-    public double getTotalAfterDiscount( int qty){
-        return discount.getTotalAfterDiscount(this.price , qty);
+    public double getTotalAfterDiscount( int qty ){
+        return discount.getTotalAfterDiscount( this.price , qty );
     }
     
     @Override

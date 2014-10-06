@@ -1,23 +1,30 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package pointofsale;
 
 /**
- *
+ * This class's responsibility is to generate an individual lineItem for the receipt
+ * to use and display based on the productID and quantity entered. 
+ * 
  * @author Alex
  */
 public class LineItem {
    
-    private MockProductDatabase db;
+    private final MockProductDatabase db;
     private Product product;
     private int quantity;
-    private double lineTotal;
+    private final double lineTotal;
     
     
-    
+    /**
+     * 
+     * @param productID
+     * @param quantity 
+     * 
+     * The "productID" variable passed in is immediately found and initialized by the 
+     * setProduct method.
+     * 
+     * The "quantity" variable is used to generate a lineTotal;
+     */
     public LineItem( String productID , int quantity ){
         
         db = new MockProductDatabase();
@@ -30,12 +37,8 @@ public class LineItem {
         return product;
     }
     
-    public final void setProduct(Product product){
+    private void setProduct( Product product ){
         this.product = product;
-    }
-    
-    public void setLineTotal( double lineTotal ){
-        this.lineTotal = lineTotal;
     }
     
     public double getLineTotal(){
@@ -46,17 +49,17 @@ public class LineItem {
         return quantity;
     }
 
-    public final void setQuantity(int quantity) {
+    private void setQuantity( int quantity ) {
         this.quantity = quantity;
     }
     
     public double getTotalAfterDiscount( ){
-        return product.getTotalAfterDiscount(quantity);
+        return product.getTotalAfterDiscount( quantity );
     }
 
     @Override
     public String toString(){
-        return "Description: " + product
+        return "Product: " + product
                 +"\nQuantity: " + quantity 
                 +"\nPrice Per Item After Discount: $" + getTotalAfterDiscount()
                 +"\nLine Total Before Discount: $" + lineTotal;

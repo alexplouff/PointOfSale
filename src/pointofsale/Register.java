@@ -1,13 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package pointofsale;
 
 import java.util.Arrays;
 
-/**
+/** The purpose of this class is to create a conceptual register by accepting
+ * customers , creating a new transaction , adding products to a transaction , 
+ * and printing a receipt.
  *
  * @author Alex
  */
@@ -26,17 +24,22 @@ public class Register {
     }
     
     public void startNewTransaction( String custID ){
-        cdb.findCustomer(custID);
+        cdb.findCustomer( custID );
     }
     
+    /** This method adds a new lineItem based on the productID and quantity entered.
+     * 
+     * @param productID
+     * @param quantity 
+     */
     public void addNewLineItem( String productID , int quantity ){
-        LineItem lineItem = new LineItem( productID , quantity );
-        receipt.addToArray(lineItem);
+        receipt.addNewLineItem( productID, quantity );
+        receipt.addToArray( receipt.getLineItem() );
     }
     
     public void generateTotalsAndPrintReceipt(){
         receipt.generateTotals();
-        System.out.println(receipt);
+        System.out.println( receipt );
     }
     
 }

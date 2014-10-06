@@ -1,12 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package pointofsale;
 
 /**
- *
+ * This is a mock database to simulate an actual database.
  * @author Alex
  */
 public class MockCustomerDatabase {
@@ -14,17 +10,24 @@ public class MockCustomerDatabase {
     
     private final Customer [] customers = {
         
-        new Customer( "Mike" , "Carpenter" , "Cust101"),
-        new Customer( "Alex" , "Plouff" , "Cust102"),
-        new Customer( "Josh" , "Conley" , "Cust103")
+        new Customer( "Mike" , "Carpenter" , "Cust101" ) ,
+        new Customer( "Alex" , "Plouff" , "Cust102" ) ,
+        new Customer( "Josh" , "Conley" , "Cust103" )
         
     };
     
-    public Customer findCustomer( String custID){
+    
+    /** findCustomer( custID )
+     * this method finds an individual customer by their unique identifier ( custID )
+     * @param custID
+     * 
+     * @return customer
+     */
+    public Customer findCustomer( String custID ){
         Customer customer = null;
         
         for ( Customer c : customers )
-            if( custID.equals(c.getCustID())) {
+            if( custID.equals( c.getCustID() ) ) {
                 customer = c;
             } 
         

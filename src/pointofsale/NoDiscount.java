@@ -1,19 +1,17 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package pointofsale;
 
 /**
  *
  * @author Alex
+ * 
+ * This class is a part of the DiscountStrategy and does not return a discount at all.
  */
 public class NoDiscount implements DiscountStrategy {
     
     
     @Override
-    public double getTotalAfterDiscount( double price, int qty){
+    public double getTotalAfterDiscount( double price, int qty ){
         
         return price * qty;
         

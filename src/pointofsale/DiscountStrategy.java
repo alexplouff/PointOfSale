@@ -6,7 +6,9 @@
 package pointofsale;
 
 /** Description of class
- * Responsibilities
+ * 
+ * This is the interface for each Discount object. The method should be over-ridden
+ * to apply the discount and return the total AFTER the discount has been applied.
  *
  * @author Alex
  */
