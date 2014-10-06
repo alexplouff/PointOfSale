@@ -18,13 +18,16 @@ public class PointOfSale {
         Register register = new Register(
                                 new ReceiptByConsoleOutput() );
         
-        register.startNewTransaction( "Cust102" );
+        
+        
+        register.startNewTransaction( "Cust103" );
         
         register.addNewLineItem( "A101" , 3 );
         register.addNewLineItem( "B101" , 2 );
         register.addNewLineItem( "C103" , 1 );
         
         register.generateTotalsAndPrintReceipt();
+        
         
     }
     

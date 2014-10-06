@@ -24,7 +24,12 @@ public class MockCustomerDatabase implements CustomerDatabaseStrategy {
      * @return customer
      */
     @Override
-    public Customer findCustomer( String custID ){
+    public Customer findCustomer( String custID ) throws IllegalArgumentException {
+        
+        if( custID == null || custID.length() != 7)
+            throw new IllegalArgumentException("CustomerID must be 7 characters,"
+                    + " Start with 'Cust' and end with ###");
+        
         Customer customer = null;
         
         for ( Customer c : customers )

@@ -23,10 +23,6 @@ public class ReceiptByConsoleOutput implements ReceiptStrategy {
         lineItems = new LineItem[0];
 
     }
-
-    private void setLineItem( LineItem lineItem ) {
-        this.lineItem = lineItem;
-    }
     
     /**
      * This method creates a new lineItem and adds it to the receipt. The product
@@ -35,14 +31,25 @@ public class ReceiptByConsoleOutput implements ReceiptStrategy {
      * @param quantity 
      */
     @Override
-    public void addNewLineItem( String productID , int quantity ){
+    public void addNewLineItem( String productID , int quantity ) throws IllegalArgumentException {
+        
+        if( productID == null || productID.length() != 4
+                || quantity < 1)
+        
+            throw new IllegalArgumentException("ProductID must be 4 Characters "
+                    + "and quantity must be greater than 0.");
+        
+        
         lineItem = new LineItem( productID , quantity );
      
     }
 
     @Override
-    public void addToArray( final LineItem item ) {
-        // needs validation
+    public void addToArray( final LineItem item ) throws IllegalArgumentException {
+        
+        if( item == null )
+            throw new IllegalArgumentException("This is not of type LineItem.");
+        
         LineItem[] tempItems = new LineItem[lineItems.length + 1];
         System.arraycopy(lineItems, 0, tempItems, 0, lineItems.length);
         tempItems[lineItems.length] = item;

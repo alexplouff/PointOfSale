@@ -25,6 +25,7 @@ public class LineItem {
      * 
      * The "quantity" variable is used to generate a lineTotal;
      */
+    
     public LineItem( String productID , int quantity ){
         
         db = new MockProductDatabase();
@@ -49,7 +50,9 @@ public class LineItem {
         return quantity;
     }
 
-    private void setQuantity( int quantity ) {
+    private void setQuantity( int quantity ) throws IllegalArgumentException {
+        if( quantity == 0 )
+            throw new IllegalArgumentException("Quantity must be greater than 0.");
         this.quantity = quantity;
     }
     

@@ -33,8 +33,13 @@ public class MockProductDatabase implements ProductDatabaseStrategy {
      * @return specific product
      */
     @Override
-    public Product findProductByID( String productID ) {
+    public Product findProductByID( String productID ) throws IllegalArgumentException {
 
+        if( productID == null || productID.length() != 4 )
+            throw new IllegalArgumentException("ProductID must be 7 characters, "
+                    + " must start with a capitalized single character 'A' and '"
+                    + "followed by three digits ### --> 'A101' ");
+        
         Product product = null;
 
         for ( Product p : products ) {

@@ -34,7 +34,10 @@ public class Product {
         return productDescription;
     }
 
-    private void setProductDescription( String productDescription ) {
+    private void setProductDescription( String productDescription ) throws IllegalArgumentException {
+        if(productDescription == null || productDescription.length() < 3 )
+            throw new IllegalArgumentException("Descprption must be atleast 3 "
+                    + "characters");
         this.productDescription = productDescription;
     }
 
@@ -42,7 +45,9 @@ public class Product {
         return price;
     }
 
-    private void setPrice(double price) {
+    private void setPrice(double price) throws IllegalArgumentException {
+        if( price < .01 || price > 999.99 )
+            throw new IllegalArgumentException("Check cost of price again.");
         this.price = price;
     }
 
@@ -50,7 +55,10 @@ public class Product {
         return productID;
     }
 
-    private void setProductID( String productID ) {
+    private void setProductID( String productID ) throws IllegalArgumentException {
+        if ( productID == null || productID.length() != 4 )
+            throw new IllegalArgumentException("ProductID must be 4 characters "
+                    + "long.");
         this.productID = productID;
     }
     
