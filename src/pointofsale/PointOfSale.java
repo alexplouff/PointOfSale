@@ -28,6 +28,17 @@ public class PointOfSale {
         
         register.generateTotalsAndPrintReceipt();
         
+        System.out.println();
+        System.out.println();
+        
+        register.startNewTransaction( "Cust102" );
+        
+        register.addNewLineItem( "B102" , 3 );
+        register.addNewLineItem( "A101" , 2 );
+        
+        register.generateTotalsAndPrintReceipt();
+        
+        
         
     }
     
