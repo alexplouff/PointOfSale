@@ -5,7 +5,7 @@ package pointofsale;
  *
  * @author Alex
  */
-public class MockProductDatabase {
+public class MockProductDatabase implements ProductDatabaseStrategy {
 
     private final Product[] products = {
         
@@ -32,6 +32,7 @@ public class MockProductDatabase {
      * 
      * @return specific product
      */
+    @Override
     public Product findProductByID( String productID ) {
 
         Product product = null;

@@ -5,7 +5,7 @@ package pointofsale;
  * This is a mock database to simulate an actual database.
  * @author Alex
  */
-public class MockCustomerDatabase {
+public class MockCustomerDatabase implements CustomerDatabaseStrategy {
     
     
     private final Customer [] customers = {
@@ -23,6 +23,7 @@ public class MockCustomerDatabase {
      * 
      * @return customer
      */
+    @Override
     public Customer findCustomer( String custID ){
         Customer customer = null;
         

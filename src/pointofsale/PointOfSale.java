@@ -15,7 +15,8 @@ public class PointOfSale {
 
     public static void main(String[] args) {
        
-        Register register = new Register();
+        Register register = new Register(
+                                new ReceiptByConsoleOutput() );
         
         register.startNewTransaction( "Cust102" );
         

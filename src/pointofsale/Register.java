@@ -11,16 +11,17 @@ import java.util.Arrays;
  */
 public class Register {
     
-    private final Receipt receipt;
-    private final MockCustomerDatabase cdb;
+    private final ReceiptStrategy receiptStrategy;    
+    private final CustomerDatabaseStrategy cdb;
     
-    public Register(){
-        receipt = new Receipt();
+    public Register( ReceiptStrategy receiptStrategy ){
+        
+        this.receiptStrategy = receiptStrategy;
         cdb = new MockCustomerDatabase();
     }
     
-    public Receipt geReceipt(){
-        return receipt;
+    public ReceiptStrategy geReceipt(){
+        return receiptStrategy;
     }
     
     public void startNewTransaction( String custID ){
@@ -33,13 +34,13 @@ public class Register {
      * @param quantity 
      */
     public void addNewLineItem( String productID , int quantity ){
-        receipt.addNewLineItem( productID, quantity );
-        receipt.addToArray( receipt.getLineItem() );
+        receiptStrategy.addNewLineItem( productID, quantity );
+        receiptStrategy.addToArray( receiptStrategy.getLineItem() );
     }
     
     public void generateTotalsAndPrintReceipt(){
-        receipt.generateTotals();
-        System.out.println( receipt );
+        receiptStrategy.generateTotals();
+        receiptStrategy.printReceipt();
     }
     
 }
