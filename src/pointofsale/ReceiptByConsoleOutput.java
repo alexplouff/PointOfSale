@@ -15,13 +15,18 @@ public class ReceiptByConsoleOutput implements ReceiptStrategy {
 
     private LineItem lineItem;
     private LineItem[] lineItems;
+    
     private double grandTotal;
     private double totalDiscount;
     private double amountDueAfterDiscount;
 
     public ReceiptByConsoleOutput() {
         lineItems = new LineItem[0];
-
+    }
+    
+    @Override
+    public void reStartArray(){
+        lineItems = new LineItem[0];
     }
     
     /**
@@ -72,6 +77,11 @@ public class ReceiptByConsoleOutput implements ReceiptStrategy {
      */
     @Override
     public void generateTotals() {
+        
+        this.grandTotal = 0;
+        this.totalDiscount = 0;
+        this.amountDueAfterDiscount = 0;
+        
         for ( LineItem item : lineItems ) {
             grandTotal += item.getLineTotal();
             amountDueAfterDiscount += item.getTotalAfterDiscount();

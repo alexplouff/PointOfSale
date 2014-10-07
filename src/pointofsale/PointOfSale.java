@@ -7,7 +7,7 @@ package pointofsale;
  * To look up a customer use --> register.startNewTransaction( "Cust###" );
  * To look up a product use ---> register.addNewLineItem( " charA-C " , quantity ); where quantity is your amount desired.
  * To end transaction and print receipt use --> register.generateTotalsAndPrintReceipt();
- * 
+ * To end the sale , restart the LineItem[] and reset the receipt totals use --> register.endSale_and_resetArray();
  * @author Alex
  */
 public class PointOfSale {
@@ -23,20 +23,27 @@ public class PointOfSale {
         register.startNewTransaction( "Cust103" );
         
         register.addNewLineItem( "A101" , 3 );
-        register.addNewLineItem( "B101" , 2 );
+        register.addNewLineItem( "B101" , 1 );
         register.addNewLineItem( "C103" , 1 );
         
         register.generateTotalsAndPrintReceipt();
         
+        register.endSale_and_resetArray();
+        
         System.out.println();
         System.out.println();
+        
+//        Register r = new Register(
+//                            new ReceiptByDialogBox() );
         
         register.startNewTransaction( "Cust102" );
         
-        register.addNewLineItem( "B102" , 3 );
-        register.addNewLineItem( "A101" , 2 );
+        register.addNewLineItem( "B102" , 2 );
+        register.addNewLineItem( "A101" , 3 );
         
         register.generateTotalsAndPrintReceipt();
+        
+        register.endSale_and_resetArray();
         
         
         

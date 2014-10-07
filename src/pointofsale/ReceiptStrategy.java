@@ -29,7 +29,7 @@ public interface ReceiptStrategy {
     
     public abstract void generateTotals();
 
-    
+    public abstract void reStartArray();
     
     public abstract double getAmountDueAfterDiscount();
 

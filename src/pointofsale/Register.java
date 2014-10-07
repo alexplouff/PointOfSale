@@ -13,6 +13,7 @@ public class Register {
     
     private final ReceiptStrategy receiptStrategy;    
     private final CustomerDatabaseStrategy cdb;
+   // private Register register;
     
     public Register( ReceiptStrategy receiptStrategy ){
         
@@ -20,11 +21,13 @@ public class Register {
         cdb = new MockCustomerDatabase();
     }
     
-    public ReceiptStrategy geReceipt(){
+    public final ReceiptStrategy getReceipt(){
         return receiptStrategy;
     }
     
     public void startNewTransaction( String custID ) throws IllegalArgumentException {
+                   
+        //receiptStrategy.reStartArray();
         
         if( custID == null || custID.length() != 7 )
             throw new IllegalArgumentException("CustID must be 7 characters long.");
@@ -39,7 +42,7 @@ public class Register {
      */
     public void addNewLineItem( String productID , int quantity ) throws IllegalArgumentException {
         
-        if (productID == null || productID.length() != 4 || quantity < 1 )
+        if ( productID == null || productID.length() != 4 || quantity < 1 )
             throw new IllegalArgumentException("ProductID must be 4 characters, "
                     + "and quantity must be greater than 0.");
         
@@ -50,6 +53,10 @@ public class Register {
     public void generateTotalsAndPrintReceipt(){
         receiptStrategy.generateTotals();
         receiptStrategy.printReceipt();
+    }
+    
+    public void endSale_and_resetArray(){
+        receiptStrategy.reStartArray();
     }
     
 }

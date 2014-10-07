@@ -25,6 +25,13 @@ public class ReceiptByDialogBox implements ReceiptStrategy{
     public ReceiptByDialogBox() {
         
         lineItems = new LineItem[0];
+        setDefaultAmounts();
+    }
+    
+    private void setDefaultAmounts(){
+        this.grandTotal = 0;
+        this.totalDiscount = 0;
+        this.amountDueAfterDiscount = 0;
     }
     
     /**
@@ -45,10 +52,16 @@ public class ReceiptByDialogBox implements ReceiptStrategy{
     }
 
     @Override
+    public void reStartArray(){
+        lineItems = new LineItem[0];
+      //  setDefaultAmounts();
+    }
+    
+    @Override
     public void addToArray( final LineItem item ) throws IllegalArgumentException {
 
         if( item == null )
-            throw new IllegalArgumentException("Must pass in of datatype LineItem");
+            throw new IllegalArgumentException("Must pass in LineItem type");
         
         LineItem[] tempItems = new LineItem[lineItems.length + 1];
         System.arraycopy(lineItems, 0, tempItems, 0, lineItems.length);
@@ -72,6 +85,12 @@ public class ReceiptByDialogBox implements ReceiptStrategy{
      */
     @Override
     public void generateTotals() {
+        
+        grandTotal = 0;
+        totalDiscount = 0;
+        amountDueAfterDiscount = 0;
+        
+        
         for ( LineItem item : lineItems ) {
             grandTotal += item.getLineTotal();
             amountDueAfterDiscount += item.getTotalAfterDiscount();
