@@ -117,7 +117,7 @@ public class ReceiptByConsoleOutput implements ReceiptStrategy {
         String s = Arrays.toString(lineItems);
         
            return "Items: "
-                + "\n" + s.replaceAll("[,]", "\n\n")
+                + "\n" + s.replaceAll(",", "\n\n").replace("[", "").replace("]", "")
                 + "\n\n            Grand Total: " + formatter.format( grandTotal )
                 + "\n            Discount: " + formatter.format( totalDiscount )
                 + "\n            Amount Due: " + formatter.format( amountDueAfterDiscount );

@@ -86,9 +86,9 @@ public class ReceiptByDialogBox implements ReceiptStrategy{
     @Override
     public void generateTotals() {
         
-        grandTotal = 0;
-        totalDiscount = 0;
-        amountDueAfterDiscount = 0;
+        this.grandTotal = 0;
+        this.totalDiscount = 0;
+        this.amountDueAfterDiscount = 0;
         
         
         for ( LineItem item : lineItems ) {
@@ -118,10 +118,10 @@ public class ReceiptByDialogBox implements ReceiptStrategy{
         
         JOptionPane.showMessageDialog(
                 
-                null ,
-                toString() ,
-                "Receipt Dialog" ,
-                JOptionPane.PLAIN_MESSAGE) ;
+                null ,                         // frame
+                toString() ,                   // message
+                "Receipt Dialog" ,             // message title
+                JOptionPane.PLAIN_MESSAGE) ;   // message type
 
     }
    
@@ -133,10 +133,8 @@ public class ReceiptByDialogBox implements ReceiptStrategy{
         NumberFormat formatter = NumberFormat.getCurrencyInstance( Locale.US );
         String s = Arrays.toString(lineItems);
         
-        
-        
            return "Items: "
-                + "\n" + s.replaceAll("[,]", "\n\n")
+                + "\n" + s.replace(",", "\n\n").replace("[", "").replace("]", "")
                 + "\n\n            Grand Total: " + formatter.format( grandTotal )
                 + "\n            Discount: " + formatter.format( totalDiscount )
                 + "\n            Amount Due: " + formatter.format( amountDueAfterDiscount );

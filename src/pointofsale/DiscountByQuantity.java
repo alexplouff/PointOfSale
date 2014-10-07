@@ -1,4 +1,4 @@
-
+ 
 package pointofsale;
 
 /**
@@ -20,20 +20,20 @@ public class DiscountByQuantity implements DiscountStrategy{
     
     
     @Override
-    public double getTotalAfterDiscount( double price , int qty ) throws IllegalArgumentException {
+    public double getTotalDueAfterDiscount( double price , int quantity ) throws IllegalArgumentException {
 
-        if( qty < 1 ){
+        if( quantity < 1 ){
             throw new IllegalArgumentException("Quantity can NOT be less than 1");
         }
             
-        double total = price * qty;
+        double total = price * quantity;
         
-        if ( qty > minQty ) {
+        if ( quantity > minQty ) {
             total = total - ( total * discountRate ); 
             
         }
     
-        return total;
+        return total ;
 
     }
     

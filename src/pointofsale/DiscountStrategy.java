@@ -14,6 +14,6 @@ package pointofsale;
  */
 public interface DiscountStrategy {
 
-    double getTotalAfterDiscount(double price, int qty);
+    double getTotalDueAfterDiscount(double price, int qty);
     
 }

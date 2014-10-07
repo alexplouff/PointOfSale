@@ -15,37 +15,55 @@ public class PointOfSale {
 
     public static void main(String[] args) {
        
-        Register register = new Register(
-                                new ReceiptByConsoleOutput() );
+     Register register = new Register( 
+                
+                       new ReceiptByConsoleOutput() , new MockCustomerDatabase()
+                                              
+     );
         
         
         
-        register.startNewTransaction( "Cust103" );
+        register.startNewTransaction( "Cust102" );
         
-        register.addNewLineItem( "A101" , 3 );
-        register.addNewLineItem( "B101" , 1 );
+        register.addNewLineItem( "A101" , 6 );
+        register.addNewLineItem( "A101" , 1 );
         register.addNewLineItem( "C103" , 1 );
         
         register.generateTotalsAndPrintReceipt();
         
-        register.endSale_and_resetArray();
+        register.endSale();
+        
+        
         
         System.out.println();
         System.out.println();
         
-//        Register r = new Register(
-//                            new ReceiptByDialogBox() );
+        
         
         register.startNewTransaction( "Cust102" );
         
         register.addNewLineItem( "B102" , 2 );
-        register.addNewLineItem( "A101" , 3 );
         
         register.generateTotalsAndPrintReceipt();
         
-        register.endSale_and_resetArray();
+        register.endSale();
         
         
+        
+        System.out.println();
+        System.out.println();
+        
+        
+        
+        register.startNewTransaction( "Cust101" );
+        
+        register.addNewLineItem( "A103" , 2 );
+        register.addNewLineItem( "B102", 3 );
+        register.addNewLineItem( "C101", 1 );
+        
+        register.generateTotalsAndPrintReceipt();
+        
+        register.endSale();
         
     }
     

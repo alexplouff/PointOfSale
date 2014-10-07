@@ -15,10 +15,10 @@ public class Register {
     private final CustomerDatabaseStrategy cdb;
    // private Register register;
     
-    public Register( ReceiptStrategy receiptStrategy ){
+    public Register( ReceiptStrategy receiptStrategy , CustomerDatabaseStrategy cdb ){
         
         this.receiptStrategy = receiptStrategy;
-        cdb = new MockCustomerDatabase();
+        this.cdb = cdb;
     }
     
     public final ReceiptStrategy getReceipt(){
@@ -27,7 +27,6 @@ public class Register {
     
     public void startNewTransaction( String custID ) throws IllegalArgumentException {
                    
-        //receiptStrategy.reStartArray();
         
         if( custID == null || custID.length() != 7 )
             throw new IllegalArgumentException("CustID must be 7 characters long.");
@@ -55,7 +54,7 @@ public class Register {
         receiptStrategy.printReceipt();
     }
     
-    public void endSale_and_resetArray(){
+    public void endSale(){
         receiptStrategy.reStartArray();
     }
     

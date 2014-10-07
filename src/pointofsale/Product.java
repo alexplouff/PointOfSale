@@ -63,7 +63,7 @@ public class Product {
     }
     
     public double getTotalAfterDiscount( int qty ){
-        return discount.getTotalAfterDiscount( this.price , qty );
+        return discount.getTotalDueAfterDiscount( this.price , qty );
     }
     
     @Override

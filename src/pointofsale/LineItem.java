@@ -60,11 +60,15 @@ public class LineItem {
         return product.getTotalAfterDiscount( quantity );
     }
 
+    public double getPricePerItemAfterDiscount(){
+        return getTotalAfterDiscount() / quantity;
+    }
+    
     @Override
     public String toString(){
         return "Product: " + product
-                +"\nQuantity: " + quantity 
-                +"\nPrice Per Item After Discount: $" + getTotalAfterDiscount()
+                +"\nQuantity: " + quantity + " | " + "Price $: " + product.getPrice()
+                +"\nPrice Per Item After Discount: $" + getPricePerItemAfterDiscount()
                 +"\nLine Total Before Discount: $" + lineTotal;
     }
     
