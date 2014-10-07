@@ -56,6 +56,6 @@ public class Register {
     
     public void endSale(){
         receiptStrategy.reStartArray();
-    }
+    } 
     
 }
